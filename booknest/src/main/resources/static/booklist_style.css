@@ -1,0 +1,14 @@
+body {
+	background-color: DarkSlateGray;
+	font: 15px ""Lucida Console" AntiqueWhite;
+}
+
+
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	border: 1px white;
+	background-color: 1px CadetBlue;
+}
+
