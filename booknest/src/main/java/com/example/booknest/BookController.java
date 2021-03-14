@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,8 +24,10 @@ public class BookController {
 	
 	//displays table of books from DB
 	@GetMapping("/books")
-	public String showBooks(Model model){
-		model.addAttribute("bookList", bookService.getAllBooks()); //bookList is the element passed to the Thymeleaf table in the th:each="book : ${bookList}" line
+	public String showBooks(Model model, @Param("keyword") String keyword){
+		List<Book> listBooks = bookService.getAllBooks(keyword);
+		model.addAttribute("bookList", listBooks); //bookList is the element passed to the Thymeleaf table in the th:each="book : ${bookList}" line
+		model.addAttribute("keyword", keyword);
 		return "booklist"; //name of the Thymeleaf html doc
 	}
 	
@@ -59,8 +62,12 @@ public class BookController {
 	}
 	
 	@GetMapping("/deleteBook/{id}")
-		public String deleteBook(@PathVariable (value = "id") long id) {
-			bookService.deleteBookById(id);
-			return "redirect:/books";
-		}
+	public String deleteBook(@PathVariable (value = "id") long id) {
+		bookService.deleteBookById(id);
+		return "redirect:/books";
+	}
+	
+	/*
+	@GetMapping("/books/{keyword}")
+	public*/
 }
