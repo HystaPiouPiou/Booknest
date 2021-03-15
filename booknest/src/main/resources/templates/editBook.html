@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Booknest</title>
+	</head>
+	<body>
+		<h1>Edit the book (misstyping happens)</h1>
+		
+		<a th:href="@{/books}">Go back to your pile of books</a>
+		
+		<div>
+			<h2>Edit Book</h2>
+			<hr>
+			<form action="#" th:action="@{/saveBook}" th:object="${book}" method="POST">
+				<!-- Hidden input field because the edit is managed through id -->
+				<input type="hidden" th:field="*{id}"/>
+				<input type="text" th:field = "*{title}"> <!--* link the result of the field with the corresponding class -->
+				<input type="text" th:field = "*{author}" >
+				<input type="text" th:field = "*{serieName}" >
+				<input type="number" th:field = "*{serieNumber}">
+				<input type="number" th:field = "*{readStatut}">
+			
+				<button type="submit">Edit the book (get a cookie)</button>
+			</form>
+		</div>
+	</body>
+</html>

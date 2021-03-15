@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title th:text="${title}">Booknest</title>
+		<link th:href="@{/booklist_style.css}" rel="stylesheet"/>
+	</head>
+	
+	<body>
+		<div>
+			<h1>Here's your booklist !</h1>
+			<button onclick="window.location.href='http://localhost:8080/newBook';"
+			class="button-body">Add book</button>
+			<form th:action="@{/books}">
+				Filter: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
+				&nbsp;
+				<input type="submit" value="Search" />
+				&nbsp;
+				<input type ="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+				<script type="text/javascript">
+					function clearSearch(){
+						window.location = "[[@{/books}]]"
+					}
+				</script>
+			</form>
+		</div>
+		
+		<div>
+			<table>
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>Author</th>
+					<th>Serie</th>
+					<th>Read(1) or not(0)</th>
+					<th>Options</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr th:each="book : ${bookList}">
+					<td th:text="${book.title}"> </td>
+					<td th:text="${book.author}"> </td>
+					<td th:text="${book.serieName}"></td> 
+					<td th:text="${book.readStatut}"></td>
+					<td> <a th:href ="@{/editBook/{id}(id=${book.id})}" class="link-table">Edit</a>
+					<!--<button>Burn (delete)</button>  -->
+					<a th:href ="@{/deleteBook/{id}(id=${book.id})}" class="link-table">Delete</a>
+					</td>
+					
+			</tr>
+			</tbody>
+
+		</table>
+		</div>
+		
+	</body>
+</html>
