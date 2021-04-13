@@ -12,9 +12,12 @@ public class BookServiceImplementation implements BookService{
 	@Autowired
 	private BookRepository bookRepository;
 	
+	//CRUD basics
 	@Override
-	public List<Book> getAllBooks() {
-		// TODO Auto-generated method stub
+	public List<Book> getAllBooks(String keyword) {
+		if(keyword != null) {
+			return bookRepository.findByTitleOrAuthor(keyword);
+		}
 		return bookRepository.findAll();
 	}
 	
@@ -43,4 +46,22 @@ public class BookServiceImplementation implements BookService{
 		this.bookRepository.deleteById(id);
 	}
 
+	//---------------------------------------------------------------------
+	
+	//Filter and search options
+	@Override
+	public List<Book> getAllReadBooks(){
+		return this.bookRepository.findAllRead();
+	}
+	
+	@Override
+	public List<Book> getAllNotReadBooks(){
+		return this.bookRepository.findAllNotRead();
+	}
+	
+	/*
+	@Override
+	public List<Book> getByKeyword(String keyword){
+		return this.bookRepository.findByTitleOrAuthor(keyword);
+	}*/
 }

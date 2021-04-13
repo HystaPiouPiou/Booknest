@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title th:text="${title}">Booknest</title>
+	</head>
+	<body>
+		<h1>Fill your list !</h1>
+		
+		<a th:href="@{/books}">Go back to your pile of books</a>
+		
+		<div>
+			<h2>Add Book</h2>
+			<hr>
+			<form action="#" th:action="@{/saveBook}" th:object="${book}" method="POST">
+				<input type="text" th:field = "*{title}" placeholder="Please, a book has a title"> <!--* link the result of the field with the corresponding class -->
+				<input type="text" th:field = "*{author}" placeholder="Yes, someone has typed a lot of words">
+				<input type="text" th:field = "*{serieName}" placeholder="Name of the serie, because your book can have cousins">
+				<input type="number" th:field = "*{serieNumber}" placeholder="Your book may also have a number attached to its place in the serie. Use a number, not a roman notation.">
+				<input type="number" th:field = "*{readStatut}" placeholder="Binary time. 0 for the daunting reading stack, 1 if you've already read it">
+			
+				<button type="submit">Save the book (not the queen)</button>
+			</form>
+		</div>
+	</body>
+</html>

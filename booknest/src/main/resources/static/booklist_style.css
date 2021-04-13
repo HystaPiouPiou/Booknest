@@ -1,14 +1,39 @@
-body {
-	background-color: DarkSlateGray;
-	font: 15px ""Lucida Console" AntiqueWhite;
+body{
+	background-color: #2f4f4f;
+	font-size: 15px #8fbc8f;
+	color:#faebd7;
+	font-family:'Lucida Console';
+}
+
+h1{
+	text-align: center;
+}
+
+.button-body{
+	display: inline-block;
+	font-size: 15px;
+	font-family: 'Lucida Console';
+	background-color:#8fbc8f;
+	color:#faebd7;
+	border: 3px #daa520; /*golden rod #daa520 ou peru #cd853f ou sandybrown : #f4a460*/
+	text-align: center;
 }
 
 
 
-table {
+table{
 	width: 100%;
 	border-collapse: collapse;
-	border: 1px white;
-	background-color: 1px CadetBlue;
+	border: 3px solid #f4d4aa;
+	background-color: #4F2F2F; /* light sea green : #8fbc8f ou complémentaire body : #4F2F2F */
+	text-align: center;
+}
+
+
+.link-table{
+	font-family: inherit;
+	font-size: inherit;
+	color:#daa520; /*golden rod #daa520 ou peru #cd853f ou sandybrown : #f4a460*/
+	text-align: inherit;
 }
 
